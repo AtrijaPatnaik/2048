@@ -1,6 +1,10 @@
 const gridElement = document.getElementById('grid');
 const scoreElement = document.getElementById('score');
 const restartBtn = document.getElementById('restart-btn');
+const upBtn = document.getElementById('up-btn');
+const downBtn = document.getElementById('down-btn');
+const leftBtn = document.getElementById('left-btn');
+const rightBtn = document.getElementById('right-btn');
 
 let grid = [];
 let score = 0;
@@ -129,31 +133,4 @@ function move(direction) {
                         target++;
                         moved = true;
                     }
-                    if (target < 3 && grid[r][target + 1] === current) {
-                        grid[r][target + 1] *= 2;
-                        grid[r][target] = 0;
-                        score += current;
-                        moved = true;
-                    }
-                }
-            }
-        }
-    }
-
-    if (moved) {
-        spawn();
-        render();
-    }
-}
-
-function handleKeyDown(event) {
-    if (event.key === 'ArrowUp') move('up');
-    else if (event.key === 'ArrowDown') move('down');
-    else if (event.key === 'ArrowLeft') move('left');
-    else if (event.key === 'ArrowRight') move('right');
-}
-
-restartBtn.addEventListener('click', init);
-document.addEventListener('keydown', handleKeyDown);
-
-init();
+                    if (target < 3 && grid[r][target + 1] === current)
