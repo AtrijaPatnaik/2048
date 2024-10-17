@@ -31,7 +31,6 @@ body {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
     gap: 10px;
-    padding: 10px;
 }
 
 .tile {
@@ -72,4 +71,24 @@ body {
     color: white;
     border: none;
     border-radius: 5px;
+}
+
+.controls {
+    margin-top: 20px;
+}
+
+.controls button {
+    padding: 10px;
+    font-size: 1.5em;
+    cursor: pointer;
+    margin: 5px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.controls div {
+    display: flex;
+    justify-content: center;
 }
