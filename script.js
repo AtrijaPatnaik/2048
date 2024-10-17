@@ -129,8 +129,5 @@ function move(direction) {
                     let target = c;
                     while (target < 3 && grid[r][target + 1] === 0) {
                         grid[r][target + 1] = current;
-                        grid[r][target] = 0;
-                        target++;
-                        moved = true;
-                    }
-                    if (target < 3 && grid[r][target + 1] === current)
+                        grid
+                        
