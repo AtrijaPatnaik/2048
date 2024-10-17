@@ -28,12 +28,12 @@ function spawn() {
     for (let r = 0; r < 4; r++) {
         for (let c = 0; c < 4; c++) {
             if (grid[r][c] === 0) {
-                emptyCells.push({r, c});
+                emptyCells.push({ r, c });
             }
         }
     }
     if (emptyCells.length > 0) {
-        const {r, c} = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+        const { r, c } = emptyCells[Math.floor(Math.random() * emptyCells.length)];
         grid[r][c] = Math.random() < 0.9 ? 2 : 4;
     }
 }
@@ -129,5 +129,36 @@ function move(direction) {
                     let target = c;
                     while (target < 3 && grid[r][target + 1] === 0) {
                         grid[r][target + 1] = current;
-                        grid
-                        
+                        grid[r][target] = 0;
+                        target++;
+                        moved = true;
+                    }
+                    if (target < 3 && grid[r][target + 1] === current) {
+                        grid[r][target + 1] *= 2;
+                        grid[r][target] = 0;
+                        score += current;
+                        moved = true;
+                    }
+                }
+            }
+        }
+    }
+
+    if (moved) {
+        spawn();
+    }
+
+    if (JSON.stringify(originalGrid) !== JSON.stringify(grid)) {
+        render();
+    }
+}
+
+// Event listeners for button clicks
+upBtn.addEventListener('click', () => move('up'));
+downBtn.addEventListener('click', () => move('down'));
+leftBtn.addEventListener('click', () => move('left'));
+rightBtn.addEventListener('click', () => move('right'));
+restartBtn.addEventListener('click', init);
+
+// Initialize the game on load
+init();
